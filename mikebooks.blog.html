@@ -5,16 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mike's Books Blog</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Welcome to Mike's Books Blog</h1>
+        <div class="logo-container">
+            <img src="logo.png" alt="Mike's Books Blog Logo" class="logo">
+        </div>
+        <nav>
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
     </header>
+
     <main>
-        <!-- Main content goes here -->
+        <section id="home" class="section">
+            <div class="container">
+                <article class="post-preview">
+                    <h2>Latest Book Review: The Midnight Library</h2>
+                    <p class="post-meta">Posted on March 15, 2024</p>
+                    <p class="post-excerpt">
+                        A fascinating journey through infinite possibilities, Matt Haig's novel explores the concept of regret and choice...
+                    </p>
+                    <a href="#" class="read-more">Read More</a>
+                </article>
+
+                <article class="post-preview">
+                    <h2>Why Reading Matters in the Digital Age</h2>
+                    <p class="post-meta">Posted on March 10, 2024</p>
+                    <p class="post-excerpt">
+                        In an era dominated by screens and short-form content, the importance of deep reading becomes even more crucial...
+                    </p>
+                    <a href="#" class="read-more">Read More</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>
+                    Welcome to my book blog! I'm Mike, an avid reader and book enthusiast. Here, I share my thoughts on the books 
+                    I read, from contemporary fiction to classic literature.
+                </p>
+                <p>
+                    My goal is to inspire others to discover the joy of reading and to create meaningful discussions around literature.
+                </p>
+            </div>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; 2025 Mike's Books Blog. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2025 Mike's Books Blog. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
