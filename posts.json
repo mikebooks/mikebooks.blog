@@ -1,0 +1,29 @@
+[
+    {
+        "title": "Latest Book Review: The Midnight Library",
+        "date": "March 15, 2024",
+        "excerpt": "A fascinating journey through infinite possibilities, Matt Haig's novel explores the concept of regret and choice. Between life and death there is a library, and within that library, the shelves go on forever...",
+        "link": "posts/midnight-library.html",
+        "author": "Mike",
+        "readTime": "5 min read",
+        "tags": ["Fiction", "Philosophy", "Book Review"]
+    },
+    {
+        "title": "Why Reading Matters in the Digital Age",
+        "date": "March 10, 2024",
+        "excerpt": "In an era dominated by screens and short-form content, the importance of deep reading becomes even more crucial. Studies show that reading literary fiction improves empathy and social understanding...",
+        "link": "posts/reading-digital-age.html",
+        "author": "Mike",
+        "readTime": "4 min read",
+        "tags": ["Reading", "Digital", "Opinion"]
+    },
+    {
+        "title": "Classic Corner: Pride and Prejudice Revisited",
+        "date": "March 5, 2024",
+        "excerpt": "Two centuries later, Jane Austen's masterpiece continues to captivate readers worldwide. This month, we dive deep into the social commentary, wit, and timeless romance that makes this novel eternally relevant...",
+        "link": "posts/pride-prejudice-review.html",
+        "author": "Mike",
+        "readTime": "6 min read",
+        "tags": ["Classics", "Romance", "Book Review"]
+    }
+] 

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike's Books Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="mikebookslogov2.png" alt="Mike's Books Blog Logo" class="logo">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <script>
+                    fetch('posts.json')
+                        .then(response => response.json())
+                        .then(posts => {
+                            const container = document.querySelector('.container');
+                            posts.forEach(post => {
+                                const article = document.createElement('article');
+                                article.classList.add('post-preview');
+                                article.innerHTML = `
+                                    <h2>${post.title}</h2>
+                                    <p class="post-excerpt">${post.excerpt}</p>
+                                    <a href="${post.link}" class="read-more">Read More</a>
+                                `;
+                                container.appendChild(article);
+                            });
+                        })
+                        .catch(error => console.error('Error fetching posts:', error));
+                </script>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mike's Books Blog. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 
