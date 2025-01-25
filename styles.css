@@ -2,6 +2,7 @@
 :root {
     --primary-color: #333;
     --secondary-color: #666;
+    --tertiary-color: #84ff00;
     --background-color: #fff;
     --accent-color: #e0e0e0;
     --max-width: 800px;
@@ -24,7 +25,7 @@ body {
 .container {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 2rem;
 }
 
 /* Header and Navigation */
@@ -84,21 +85,16 @@ header {
 
 /* Main content */
 .section {
-    padding: 3rem 0;
+    padding: 2rem 0;
 }
 
 .post-preview {
     margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--accent-color);
-}
-
-.post-preview:last-child {
-    border-bottom: none;
 }
 
 h2 {
     margin-bottom: 0.5rem;
+    font-weight: 400;
 }
 
 .post-excerpt {
@@ -106,9 +102,9 @@ h2 {
 }
 
 .read-more {
-    color: var(--primary-color);
+    color: var(--tertiary-color);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 200;
 }
 
 .read-more:hover {
@@ -197,6 +193,10 @@ footer {
         align-items: center;
         transform: translateX(0);
     }
+
+    .container {
+        padding: 0 2rem;
+    }
 } 
 
 /* Post specific styles */
@@ -211,6 +211,7 @@ footer {
 .post-header h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    font-weight: 400;
 }
 
 .post-meta {
