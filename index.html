@@ -17,9 +17,20 @@
             <span></span>
             <span></span>
         </label>
+        <div class="theme-toggle-container">
+            <button id="theme-toggle" class="theme-toggle">
+                <span class="theme-toggle-light">
+                    <img src="light and dark mode assets/sun-symbol-512.webp" alt="Light mode" class="theme-icon">
+                </span>
+                <span class="theme-toggle-dark">
+                    <img src="light and dark mode assets/moon icon white.png" alt="Dark mode" class="theme-icon">
+                </span>
+            </button>
+        </div>
         <div class="logo-container">
             <a href="index.html">
-                <img src="mikebookslogov2.png" alt="Mike's Books Blog Logo" class="logo">
+                <img src="logo/mikebookslogotransparant.png" alt="Mike's Books Blog Logo" class="logo logo-light">
+                <img src="logo/mikebookslogowhite.png" alt="Mike's Books Blog Logo" class="logo logo-dark">
             </a>
         </div>
         <nav>
@@ -44,7 +55,7 @@
                                 article.innerHTML = `
                                     <h2>${post.title}</h2>
                                     <p class="post-excerpt">${post.excerpt}</p>
-                                    <a href="${post.link}" class="read-more">Read More</a>
+                                    <a href="${post.link}" class="read-more">tell me more</a>
                                 `;
                                 container.appendChild(article);
                             });
@@ -60,5 +71,23 @@
             <p>&copy; 2025 Mike's Books Blog. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
 </body>
 </html> 
