@@ -199,6 +199,11 @@ footer {
         transition: transform 0.3s ease-in-out;
     }
 
+    .nav-links a {
+        font-size: 3rem;
+        padding: 0.5rem 0;
+    }
+
     .nav-toggle:checked ~ nav .nav-links {
         display: flex;
         align-items: center;
