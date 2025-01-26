@@ -11,18 +11,29 @@
 </head>
 <body>
     <header>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="theme-toggle-container">
+            <button id="theme-toggle" class="theme-toggle">
+                <span class="theme-toggle-light">
+                    <img src="../light and dark mode assets/sun-symbol-512.webp" alt="Light mode" class="theme-icon">
+                </span>
+                <span class="theme-toggle-dark">
+                    <img src="../light and dark mode assets/moon icon white.png" alt="Dark mode" class="theme-icon">
+                </span>
+            </button>
+        </div>
         <div class="logo-container">
             <a href="../index.html">
-                <img src="../logo.png" alt="Mike's Books Blog Logo" class="logo">
+                <img src="../logo/mikebookslogotransparant.png" alt="Mike's Books Blog Logo" class="logo logo-light">
+                <img src="../logo/mikebookslogowhite.png" alt="Mike's Books Blog Logo" class="logo logo-dark">
             </a>
         </div>
         <nav>
-            <label for="nav-toggle" class="nav-toggle-label">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
             <ul class="nav-links">
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="../about.html">About</a></li>
@@ -35,7 +46,6 @@
             <div class="container">
                 <header class="post-header">
                     <h1>[Post Title]</h1>
-                    </div>
                     <div class="post-tags">
                         [Tags]
                     </div>
@@ -53,5 +63,7 @@
             <p>&copy; 2025 Mike's Books Blog. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="../scripts.js"></script>
 </body>
 </html> 
