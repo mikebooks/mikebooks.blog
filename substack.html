@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="logo/mikebookslogotransparant.png">
-    <meta name="description" content="Mike Books' Blog - Blog of Mike Bouckaert, Global Product Director at Postcode Lottery Group">
+    <meta name="description" content="Mike Books' Blog - Archive of Substack posts">
     <meta name="keywords" content="books, AI, technology, personal development, blog, health, quantified self, art, music">
     <meta name="author" content="Mike Books">
-    <meta property="og:title" content="Mike Books' Blog">
+    <meta property="og:title" content="Archive - Mike Books' Blog">
     <meta property="og:description" content="Blog of Mike Bouckaert, Global Product Director at Postcode Lottery Group">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mikebooks.blog">
-    <title>Mike Books' Blog</title>
+    <meta property="og:url" content="mikebooks@substack.com">
+    <title>Archive - Mike Books' Blog</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,34 +52,20 @@
         </div>
         <nav aria-label="Main navigation">
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="substack.html">Archive</a></li>
+                <li><a href="substack.html" class="active">Archive</a></li>
             </ul>
         </nav>
     </header>
 
     <main role="main">
-        <section class="section" aria-label="Blog Posts">
+        <section class="section" aria-label="Substack Posts">
             <div class="container">
-                <script>
-                    fetch('posts.json')
-                        .then(response => response.json())
-                        .then(posts => {
-                            const container = document.querySelector('.container');
-                            posts.forEach(post => {
-                                const article = document.createElement('article');
-                                article.classList.add('post-preview');
-                                article.innerHTML = `
-                                    <h2><a href="${post.link}" class="post-title">${post.title}</a></h2>
-                                    <p class="post-excerpt">${post.excerpt}</p>
-                                    <a href="${post.link}" class="read-more">tell me more</a>
-                                `;
-                                container.appendChild(article);
-                            });
-                        })
-                        .catch(error => console.error('Error fetching posts:', error));
-                </script>
+                <h1>Archive</h1>
+                <div id="substack-posts">
+                    <!-- Posts will be loaded here -->
+                </div>
             </div>
         </section>
     </main>
@@ -91,5 +77,26 @@
     </footer>
 
     <script src="scripts.js"></script>
+    <script>
+        fetch('https://api.rss2json.com/v1/api.json?rss_url=https://mikebooks.substack.com/feed')
+            .then(response => response.json())
+            .then(data => {
+                const postsContainer = document.getElementById('substack-posts');
+                data.items.forEach(post => {
+                    const article = document.createElement('article');
+                    article.classList.add('post-preview');
+                    article.innerHTML = `
+                        <h2><a href="${post.link}" class="post-title" target="_blank">${post.title}</a></h2>
+                        <p class="post-date">${new Date(post.pubDate).toLocaleDateString()}</p>
+                        <div class="post-content">
+                            ${post.content}
+                        </div>
+                        <a href="${post.link}" class="read-more" target="_blank">read on substack</a>
+                    `;
+                    postsContainer.appendChild(article);
+                });
+            })
+            .catch(error => console.error('Error fetching Substack posts:', error));
+    </script>
 </body>
 </html> 
