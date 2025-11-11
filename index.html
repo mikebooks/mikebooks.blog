@@ -62,23 +62,56 @@
     <main role="main">
         <section class="section" aria-label="Blog Posts">
             <div class="container">
+                <div id="posts-container">
+                    <!-- Posts will be loaded here -->
+                </div>
                 <script>
-                    fetch('posts.json')
+                    const postsContainer = document.getElementById('posts-container');
+
+                    // Fetch Substack archive posts
+                    fetch('https://api.rss2json.com/v1/api.json?rss_url=https://mikebooks.substack.com/feed')
                         .then(response => response.json())
-                        .then(posts => {
-                            const container = document.querySelector('.container');
-                            posts.forEach(post => {
-                                const article = document.createElement('article');
-                                article.classList.add('post-preview');
-                                article.innerHTML = `
-                                    <h2><a href="${post.link}" class="post-title">${post.title}</a></h2>
-                                    <p class="post-excerpt">${post.excerpt}</p>
-                                    <a href="${post.link}" class="read-more">tell me more</a>
-                                `;
-                                container.appendChild(article);
-                            });
+                        .then(data => {
+                            if (data.items && data.items.length > 0) {
+                                // Sort posts by date (most recent first)
+                                data.items.sort((a, b) => {
+                                    const dateA = new Date(a.pubDate);
+                                    const dateB = new Date(b.pubDate);
+                                    return dateB - dateA;
+                                });
+
+                                // Render all posts
+                                data.items.forEach(post => {
+                                    // Extract excerpt from content (first paragraph or description)
+                                    let excerpt = post.description || '';
+                                    if (!excerpt && post.content) {
+                                        // Create a temporary div to parse HTML content
+                                        const tempDiv = document.createElement('div');
+                                        tempDiv.innerHTML = post.content;
+                                        const firstParagraph = tempDiv.querySelector('p');
+                                        if (firstParagraph) {
+                                            excerpt = firstParagraph.textContent.trim();
+                                            // Limit excerpt length
+                                            if (excerpt.length > 200) {
+                                                excerpt = excerpt.substring(0, 200) + '...';
+                                            }
+                                        }
+                                    }
+                                    
+                                    const article = document.createElement('article');
+                                    article.classList.add('post-preview');
+                                    const postDate = new Date(post.pubDate).toLocaleDateString();
+                                    article.innerHTML = `
+                                        <h2><a href="${post.link}" class="post-title" target="_blank">${post.title}</a></h2>
+                                        <p class="post-date">${postDate}</p>
+                                        ${excerpt ? `<p class="post-excerpt">${excerpt}</p>` : ''}
+                                        <a href="${post.link}" class="read-more" target="_blank">read on substack</a>
+                                    `;
+                                    postsContainer.appendChild(article);
+                                });
+                            }
                         })
-                        .catch(error => console.error('Error fetching posts:', error));
+                        .catch(error => console.error('Error fetching Substack posts:', error));
                 </script>
             </div>
         </section>
