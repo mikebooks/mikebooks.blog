@@ -3,10 +3,14 @@ const themeToggle = document.getElementById('theme-toggle');
 const navToggle = document.getElementById('nav-toggle');
 const navPanel = document.querySelector('.nav-links');
 
-// Check for saved theme preference
+// Check for saved theme preference, default to dark mode
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
     document.documentElement.setAttribute('data-theme', savedTheme);
+} else {
+    // Default to dark mode if no preference is saved
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
 }
 
 themeToggle.addEventListener('click', () => {
